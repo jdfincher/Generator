@@ -1,0 +1,29 @@
+separator {
+	min-height: 2px;
+	/*opacity: 1.0;*/
+	min-width: 2px;
+  background-color: #82642C;
+  /*opacity: 0.5;*/
+}
+
+window {
+	background-color: #0F0F0F;
+}
+button {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	color: #DBD56E;
+  background-image: none;
+  background-color: #0F0F0F;
+  border: 0.25px solid #DBD56E; 
+}
+label {
+  color: #BBDEF0;
+}
+dialog {
+  background-color: #0F0F0F;
+}
+entry {
+  border: 0.25px solid #DBD56E;
+  background-color: #191919;
+}
