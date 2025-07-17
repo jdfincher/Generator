@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 """The Generator 0.1"""
-# Git test 
+
 # Import Modules
 import random
 import uuid
@@ -1109,6 +1109,7 @@ class MainWindow(Gtk.Window):
         mat.set_xalign(1)
         self.mat_total = Gtk.Label(label="0")
         self.mat_mod = Gtk.Label(label="0")
+        self.mat_mod.set_tooltip_text("Average of Strength, Dexterity,\n\tFitness and Agility mod.")
         self.mat_type = Gtk.Label(label="0")
         self.mat_lvl = Gtk.Label(label="0")
 
@@ -1117,6 +1118,7 @@ class MainWindow(Gtk.Window):
         react.set_xalign(1)
         self.react_total = Gtk.Label(label="0")
         self.react_mod = Gtk.Label(label="0")
+        self.react_mod.set_tooltip_text("Average of Fitness, Agility,\n\tWisdom and Intelligence mod.")
         self.react_type = Gtk.Label(label="0")
         self.react_lvl = Gtk.Label(label="0")
 
@@ -1125,6 +1127,7 @@ class MainWindow(Gtk.Window):
         mind.set_xalign(1)
         self.mind_total = Gtk.Label(label="0")
         self.mind_mod = Gtk.Label(label="0")
+        self.mind_mod.set_tooltip_text("Average of Wisdom, Intelligence,\n\tCharisma and Appearance mod.")
         self.mind_type = Gtk.Label(label="0")
         self.mind_lvl = Gtk.Label(label="0")
 
