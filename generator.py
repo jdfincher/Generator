@@ -1109,7 +1109,7 @@ class MainWindow(Gtk.Window):
         mat.set_xalign(1)
         self.mat_total = Gtk.Label(label="0")
         self.mat_mod = Gtk.Label(label="0")
-        self.mat_mod.set_tooltip_text("Average of Strength, Dexterity,\n\tFitness and Agility mod.")
+        self.mat_mod.set_tooltip_text("Average of Strength, Dexterity,\nFitness and Agility mod.")
         self.mat_type = Gtk.Label(label="0")
         self.mat_lvl = Gtk.Label(label="0")
 
@@ -1118,7 +1118,7 @@ class MainWindow(Gtk.Window):
         react.set_xalign(1)
         self.react_total = Gtk.Label(label="0")
         self.react_mod = Gtk.Label(label="0")
-        self.react_mod.set_tooltip_text("Average of Fitness, Agility,\n\tWisdom and Intelligence mod.")
+        self.react_mod.set_tooltip_text("Average of Fitness, Agility,\nWisdom and Intelligence mod.")
         self.react_type = Gtk.Label(label="0")
         self.react_lvl = Gtk.Label(label="0")
 
@@ -1127,7 +1127,7 @@ class MainWindow(Gtk.Window):
         mind.set_xalign(1)
         self.mind_total = Gtk.Label(label="0")
         self.mind_mod = Gtk.Label(label="0")
-        self.mind_mod.set_tooltip_text("Average of Wisdom, Intelligence,\n\tCharisma and Appearance mod.")
+        self.mind_mod.set_tooltip_text("Average of Wisdom, Intelligence,\nCharisma and Appearance mod.")
         self.mind_type = Gtk.Label(label="0")
         self.mind_lvl = Gtk.Label(label="0")
 
@@ -1277,6 +1277,16 @@ class MainWindow(Gtk.Window):
         self.weapon_inv_grid.set_margin_top(10)
         self.weapon_inv_grid.set_margin_bottom(10)
         weapon_inv.add(self.weapon_inv_grid)
+       
+        self.weight_grid = Gtk.Grid()
+        weight_label = Gtk.Label()
+        weight_label.set_markup("<span weight='bold' size='medium'>Total Weight:</span>")
+        weight_label.set_xalign(1)
+        self.weight_value = Gtk.Label()
+        self.weight_grid.attach(weight_label, 0, 0, 1, 1)
+        self.weight_grid.attach(self.weight_value, 1, 0, 1, 1)
+        self.weight_grid.set_margin_start(10)
+        self.weight_grid.set_margin_end(10)
 
         # Inventory Frame and Box
         main_inv = Gtk.Frame()
@@ -1287,6 +1297,7 @@ class MainWindow(Gtk.Window):
         main_inv_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
         main_inv_box.pack_start(armour_inv, True, True, 2)
         main_inv_box.pack_start(weapon_inv, True, True, 2)
+        main_inv_box.pack_start(self.weight_grid, True, True, 2)
         main_inv.add(main_inv_box)
         
         # Skill Set and Methods - Character
@@ -1316,11 +1327,13 @@ class MainWindow(Gtk.Window):
         self.skill_points = Gtk.Label()
         self.skill_points.set_markup(f"<span weight='bold'>Skill Points to allocate ->{player['skill_points']}</span>")
         cur_sep1 = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
+        cur_sep2 = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
         cur_grid = Gtk.Grid()
         cur_grid.set_halign(Gtk.Align.END)
         cur_grid.set_hexpand(True)
-        cur_grid.attach(self.skill_points, 3, 0, 1, 1)
         cur_grid.attach(cur_sep1, 3, 0, 1, 1)
+        cur_grid.attach(self.skill_points, 3, 1, 1, 1)
+        cur_grid.attach(cur_sep2, 3, 2, 1, 1)
         cur_grid.set_column_spacing(10)
         cur_grid.set_margin_start(10)
         cur_grid.set_margin_end(10)
@@ -1560,7 +1573,50 @@ class MainWindow(Gtk.Window):
         main_grid.set_margin_bottom(5)
         
         self.add(main_grid)
-        
+
+    def set_inv_weight(self):
+        arm_grid = self.armour_inv_grid
+        arm_rows = arm_grid.get_children()
+        arm_rows = (len(arm_rows) // 7) + 2
+        arm_col = 2
+        arm_weight = 0
+        wea_grid = self.weapon_inv_grid
+        wea_rows = wea_grid.get_children()
+        wea_rows = (len(wea_rows) // 10) + 2
+        wea_col = 5
+        wea_weight = 0
+        total = 0
+        for row in range(2,arm_rows):
+            try:
+                weight = arm_grid.get_child_at(arm_col, row)
+                weight = weight.get_text()
+                weight = weight.strip("Lbs")
+                arm_weight += int(weight)
+            except Exception as e:
+                print(e,"set_inv_weight func error armour")
+        for row in range(2,wea_rows):
+            try:
+                weight = wea_grid.get_child_at(wea_col, row)
+                weight = weight.get_text()
+                weight = weight.strip("Lbs")
+                wea_weight += int(weight)
+            except Exception as e:
+                print(e,"set_inv_weight func error weapons")
+        total = wea_weight + arm_weight
+        if total >= 75:
+            overage = total - 75
+            overage = str(overage)+" Lbs too heavy"
+            total = str(total)+" Lbs"
+            max_load = "75 Lbs"
+            max_load_markup = f"<span weight='bold' color='#FA7379'> (Max load is currently {max_load})</span>"
+            label_markup = f"<span weight='bold' color='#FA7379'>{total}--</span><span weight='bold' color='#FA7379'>{overage}</span>{max_load_markup}"
+            self.weight_value.set_markup(label_markup)
+        else:
+            total = str(total)+" Lbs"
+            label_markup = f"<span weight='bold' color='#BBDEF0'>{total}</span>"
+            self.weight_value.set_markup(label_markup)
+
+
     def set_arm_stats(self):
         base_get = int(self.arm_base_value.get_text())
         wis_get = int(self.wisdommod_value.get_text())
@@ -1907,7 +1963,6 @@ class MainWindow(Gtk.Window):
                 armour.append(t)
                 self.set_arm_stats()
                 break
-
     def set_e_arm(self):
         armour = player['equipped_armour']
         col = 0 
@@ -2568,6 +2623,7 @@ class MainWindow(Gtk.Window):
         if response == 1:
             self.set_arm_inv()
             self.set_weapon_inv()
+            self.set_inv_weight()
             
             dialog.destroy()
 
