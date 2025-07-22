@@ -17,6 +17,14 @@ button {
   background-color: #0F0F0F;
   border: 0.25px solid #DBD56E; 
 }
+button:active{
+  background-color: #82642C;
+  font-style: italic;
+}
+button:hover {
+  background-color: #82642C;
+  transition: background-color 0.2s ease-in-out;
+}
 label {
   color: #BBDEF0;
 }
@@ -26,4 +34,35 @@ dialog {
 entry {
   border: 0.25px solid #DBD56E;
   background-color: #191919;
+}
+menubar {
+  background-color: #191919;
+}
+menuitem:hover {
+	box-shadow: inset 0 -2px 0 0 #82642C;
+  transition: box-shadow 0.2s ease-in-out;
+  background-color: #262626;
+  transition: background-color 0.2s ease-in-out;
+}
+/*menuitem:hover label {
+  color: #82642C;
+}*/
+menu {
+  background-color: #191919;
+}
+textview text{
+  background-color: #0F0F0F;
+  color: #BBDEF0;
+}
+textview {
+  padding: 10px;
+  background-color: #0F0F0F;
+}
+frame border{
+  border-color: #82642C;
+  border-width: 2px;
+  border-radius: 5px;
+}
+frame{
+  margin: 5px;
 }

@@ -53,6 +53,58 @@ Requirements: Strength > 4
 	      Fitness  > 2
               Wisdom   > 2
 
+Benefits by Level
+
+ Lv | Aim+| Resilience | Methodology
+ ------------------------------------------------------------------------------|
+ 01 |  1  |  (1,1,1)   |Effect Result -1, Movement +1, +3 D6 HP, Aura +1, Fury |
+ 02 |-----|------------|Dmg red1, +1D6 Fitness, Initiative +2                  |
+ 03 |  2  |------------|+2D6 HP, Movement +1, Aura +2                          |
+ 04 |-----|------------|Etch Bullets +1 Aim, Called Shot +1, Range + 20'|
+ 05 |  3  |  (0,0,2)   |Beading Focus +2, Bullet Sling                  |
+ 06 |-----|------------|Faster Reload, Range + 30'                      |
+ 07 |  4  |------------|Etch Bullets + 2 Dmg                            |
+ 08 |-----|------------|Etch Bullets + 2 Aim, Range + 40'               |
+ 09 |  5  |------------|Pistol Deflection, Called Shot +2               |
+ 10 |-----|  (0,0,3)   |Bullet Storm, Range + 50'                       |
+ 11 |  6  |------------|Beading Focus +3                                |
+ 12 |-----|------------|Fast, Range + 60'                               |
+ 13 |  7  |------------|Etch Bullets +3 Dmg, Called Shot +3             |
+ 14 |-----|------------|Etch Bullets +3 Aim, Range + 70'                |
+ 15 |  8  |  (0,0,4)   |Interruptor                                     |
+ 16 |-----|------------|Beading Focus +4, Range + 80'                   |
+ 17 |  9  |------------|Etch Bullets +4 Dmg, Called Shot +4             |
+ 18 |-----|------------|Etch Bullets +4 Aim, Range + 90'                |
+ 19 | 10  |------------|Dual Etch, Hip Shots                            |
+ 20 |-----|  (0,0,5)   |Own The Clock                                   |
+ -----------------------------------------------------------------------|
+
+Weapons & Armor
+---------------
+ All Revolvers & Semi Automatic Firearms
+ Light Armor
+ Bows, Slings, Crossbows
+ No Shields
+
+Skill Points
+------------
+ start - (3 + int mod) * 8
+ level up - 6 + int mod
+
+Starting Money and Equipment
+----------------------------
+ Money - roll 10-D6
+ (2) .22 Revolvers(loaded)
+
+Restrictions
+------------
+ No Automatic Weapons
+ No Explosives
+
+-------------------------------------------------------------------------
+Methods
+-------------------------------------------------------------------------
+
 
 
    _____                 __  .__       .__       _____          __  .__          __   

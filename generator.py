@@ -278,7 +278,6 @@ class RollDice(Gtk.Dialog):
 class EditInventory(Gtk.Dialog):
     def __init__(self, parent):
         super().__init__(title="Add/Remove Equipment")
-        super().set_modal(False)
         box = self.get_content_area()
         armour_grid = Gtk.Grid()
         weapon_grid = Gtk.Grid()
@@ -347,8 +346,8 @@ class EditInventory(Gtk.Dialog):
         scroll_weapon = Gtk.ScrolledWindow.new()
         scroll_armour = Gtk.ScrolledWindow.new()
         scroll_weapon.set_propagate_natural_width(True)
-        scroll_weapon.set_min_content_height(250)
-        scroll_armour.set_min_content_height(250)
+        scroll_weapon.set_min_content_height(350)
+        scroll_armour.set_min_content_height(350)
         scroll_weapon.add(weapon_grid)
         scroll_armour.add(armour_grid)
 
@@ -838,6 +837,204 @@ class EditSkillMethod(Gtk.Dialog):
             if player_skill[i][0] == skills[0]:
                 del player_skill[i]
 
+class Shop(Gtk.Dialog):
+    def __init__(self, parent):
+        super().__init__(title="The Only Shop Around")
+        box = self.get_content_area()
+        self.add_button('Done', 1)
+
+        armour_grid = Gtk.Grid()
+        weapon_grid = Gtk.Grid()
+        
+        armour_label = Gtk.Label()
+        armour_label.set_markup("<span size='large' weight='bold'>Armour</span>")
+        armour_frame = Gtk.Frame()
+        armour_frame.set_label_widget(armour_label)
+        armour_frame.set_label_align(0.05, 0.5)
+        weapon_label = Gtk.Label()
+        weapon_label.set_markup("<span size='large' weight='bold'>Weapons</span>")
+        weapon_frame = Gtk.Frame()
+        weapon_frame.set_label_widget(weapon_label)
+        weapon_frame.set_label_align(0.05, 0.5)
+
+        orientation = Gtk.Orientation.HORIZONTAL
+        arm_type = Gtk.Label(label="Name")
+        arm_cost = Gtk.Label(label="Price")
+        arm_weight = Gtk.Label(label="Weight(lbs)")
+        arm_bonus = Gtk.Label(label="A/C Bonus")
+        arm_check = Gtk.Label(label="Check Penalty")
+        arm_sep = Gtk.Separator.new(orientation) 
+
+        wea_type = Gtk.Label.new("Name")
+        wea_cost = Gtk.Label.new("Price")
+        wea_damg = Gtk.Label.new("Damage")
+        wea_rang = Gtk.Label.new("Range")
+        wea_relo = Gtk.Label.new("Reload")
+        wea_weig = Gtk.Label.new("Weight")
+        wea_crit = Gtk.Label.new("Critical")
+        wea_aim  = Gtk.Label.new("Aim Bonus")
+        wea_amm  = Gtk.Label.new("Rounds")
+        wea_sep = Gtk.Separator.new(orientation)
+        
+        armour_grid.attach(arm_type,    0, 0, 1, 1)
+        armour_grid.attach(arm_cost,    1, 0, 1, 1)
+        armour_grid.attach(arm_weight,  2, 0, 1, 1)
+        armour_grid.attach(arm_bonus,   3, 0, 1, 1)
+        armour_grid.attach(arm_check,   4, 0, 1, 1)
+        armour_grid.attach(arm_sep,     0, 1, 9, 1)
+        armour_grid.set_column_spacing(10)
+        armour_grid.set_row_spacing(   10)
+        armour_grid.set_margin_start(  10)
+        armour_grid.set_margin_end(    10)
+        armour_grid.set_margin_top(    10)
+        armour_grid.set_margin_bottom( 10)
+
+        weapon_grid.attach(wea_type,    0, 0, 1, 1)
+        weapon_grid.attach(wea_cost,    1, 0, 1, 1)
+        weapon_grid.attach(wea_damg,    2, 0, 1, 1)
+        weapon_grid.attach(wea_rang,    3, 0, 1, 1)
+        weapon_grid.attach(wea_relo,    4, 0, 1, 1)
+        weapon_grid.attach(wea_weig,    5, 0, 1, 1)
+        weapon_grid.attach(wea_crit,    6, 0, 1, 1)
+        weapon_grid.attach(wea_aim,     7, 0, 1, 1)
+        weapon_grid.attach(wea_amm,     8, 0, 1, 1)
+        weapon_grid.attach(wea_sep,     0, 1,11, 1)
+        weapon_grid.set_column_spacing(10)
+        weapon_grid.set_row_spacing(10)
+        weapon_grid.set_margin_start(10)
+        weapon_grid.set_margin_end(10)
+        weapon_grid.set_margin_top(10)
+        weapon_grid.set_margin_bottom(10)
+
+        scroll_weapon = Gtk.ScrolledWindow.new()
+        scroll_armour = Gtk.ScrolledWindow.new()
+        scroll_weapon.set_propagate_natural_width(True)
+        scroll_weapon.set_min_content_height(350)
+        scroll_armour.set_min_content_height(350)
+        scroll_weapon.add(weapon_grid)
+        scroll_armour.add(armour_grid)
+
+        armour_frame.add(scroll_armour)
+        weapon_frame.add(scroll_weapon)
+        box.pack_start(armour_frame, True, True, 2)
+        box.pack_start(weapon_frame, True, True, 2)
+
+        col = 0
+        row = 2
+        atip = ['Name','Price','Weight','A/C Bonus','Check Penalty']
+        aindex = 0
+        for key, value in armour.items():
+            for element in value:
+                if element in armour:
+                    new = Gtk.Label.new(element.title())
+                    new.set_xalign(1)
+                    new.set_tooltip_text(atip[aindex])
+                    armour_grid.attach(new, col, row, 1, 1)
+                    col += 1
+                    aindex += 1
+                    new.show()
+                else:
+                    new = Gtk.Label.new(element.title())
+                    new.set_tooltip_text(atip[aindex])
+                    armour_grid.attach(new, col, row, 1, 1)
+                    col += 1
+                    aindex += 1
+                    new.show()
+                if element in armour:
+                    key = element
+                if '$' in element:
+                    price = element
+            buy = Gtk.Button.new_with_label("Purchase")
+            buy.connect('clicked', self.buy_item, key, price) 
+            sell = Gtk.Button.new_with_label("Sell")
+            sell.connect('clicked', self.sell_item, key, price)
+            blank1 = Gtk.Label.new("-----------")
+            blank2 = Gtk.Label.new("-----------")
+            armour_grid.attach(blank1, col, row, 1, 1)
+            col += 1
+            armour_grid.attach(blank2, col, row, 1, 1)
+            col += 1
+            armour_grid.attach(buy, col, row, 1, 1)
+            col += 1
+            if value in player['inventory']:
+                armour_grid.attach(sell, col, row, 1, 1)  
+            col = 0
+            row += 1
+            aindex = 0
+        wtip = ['Name','Price','Damage','Range','Reload','Weight','Critical','Aim Bonus','Rounds']
+        windex = 0
+        for key, value in weapons.items(): 
+            for element in value:
+                if element in weapons:
+                    new = Gtk.Label.new(element.title())
+                    new.set_xalign(1)
+                    new.set_tooltip_text(wtip[windex])
+                    weapon_grid.attach(new, col, row, 1, 1)
+                    col += 1
+                    windex += 1
+                    new.show()
+                else:
+                    new = Gtk.Label.new(element.title())
+                    new.set_tooltip_text(wtip[windex])
+                    weapon_grid.attach(new, col, row, 1, 1)
+                    col += 1
+                    windex += 1
+                    new.show()
+                if element in weapons:
+                    key = element
+                if '$' in element:
+                    price = element
+            buy = Gtk.Button.new_with_label("Purchase")
+            buy.connect('clicked', self.buy_item, key, price)
+            sell = Gtk.Button.new_with_label("Sell")
+            sell.connect('clicked', self.sell_item, key, price)
+            weapon_grid.attach(buy, col, row, 1, 1)
+            if value in player['inventory']:
+                weapon_grid.attach(sell, (col+1), row, 1, 1) 
+            col = 0
+            row += 1
+            windex = 0
+        self.show_all()
+    def buy_item(button, dictionary, key, price):
+        purse = player['money']
+        purse = purse.strip("$")
+        purse = int(purse)
+        price = price.strip("$")
+        price = int(price)
+        if price <= purse: 
+            if key in weapon_set:
+                item = weapons[key]
+                player['inventory'].append(item)
+                purse -= price
+                player['money'] = "$"+str(purse)
+            elif key in armour_set:
+                item = armour[key]
+                player['inventory'].append(item)
+                purse -= price
+                player['money'] = "$"+str(purse)
+        else:
+            print(player['money']) 
+    def sell_item(button, dictionary, key, price):
+        purse = player['money']
+        purse = purse.strip("$")
+        purse = int(purse)
+        price = price.strip("$")
+        price = int(price)
+        try:
+            if key in weapon_set and player['inventory']:
+                item = weapons[key]
+                purse += price
+                player['inventory'].remove(item)
+                player['money'] = "$"+str(purse)
+            elif key in armour_set and player['inventory']:
+                item = armour[key]
+                purse += price
+                player['inventory'].remove(item)
+                player['money'] = "$"+str(purse)
+            super().__init__()
+        except Exception as e:
+            print(e)
+
 class MainWindow(Gtk.Window):
        
     def __init__(self):
@@ -890,6 +1087,7 @@ class MainWindow(Gtk.Window):
         self.tyype_selector.append_text("Face")
         self.tyype_selector.connect("changed", self.add_type)
         att_mu = "<span size='large' weight='bold'>0</span>"
+
         # Level
         level = Gtk.Label()
         level.set_markup("<span size='large' weight='bold'>Level:</span>")
@@ -1485,6 +1683,8 @@ class MainWindow(Gtk.Window):
         menu_load = Gtk.MenuItem.new_with_label(label="Load Last")
         menu_skill_method = Gtk.MenuItem.new_with_label(label="Skills/Methods")
 
+        menu_only_shop = Gtk.MenuItem.new_with_label(label="The Only Shop")
+    
         menu_print.set_tooltip_text("Prints Character to Text File")
         menu_edit.set_tooltip_text("Edit Character Stats")
         menu_roll.set_tooltip_text("      Roll Character Stats\n*OVERWRITES ALL STATS!*")
@@ -1501,11 +1701,14 @@ class MainWindow(Gtk.Window):
         menu_load.connect("activate", self.load)
         menu_roll_dice_item.connect("activate", self.rollsim)
         menu_skill_method.connect("activate", self.skillmethod)
-        
+        menu_only_shop.connect("activate", self.go_shopping)
+
         menu_setup.insert(menu_load, 0)
         menu_setup.insert(menu_save, 1)
         menu_setup.insert(menu_roll, 2)
         menu_setup.insert(menu_print, 3)
+        
+        menu_shop.insert(menu_only_shop,0)
 
         menu_bar.append(menu_setup_item)
         menu_bar.append(menu_shop_item)
@@ -1573,6 +1776,7 @@ class MainWindow(Gtk.Window):
         main_grid.set_margin_bottom(5)
         
         self.add(main_grid)
+
 
     def set_inv_weight(self):
         arm_grid = self.armour_inv_grid
@@ -1889,14 +2093,11 @@ class MainWindow(Gtk.Window):
         self.skill_points.set_markup(f"<span weight='bold'>Skill Points to allocate ->{player['skill_points']}</span>")
 
     def clear_arm_inv(self):
-        inventory = player['inventory']
         row = 2
-        for t in inventory:
-            if t[0] in armour_set:
-                self.armour_inv_grid.remove_row(row)
-            elif t[0] not in armour_set:
-                self.armour_inv_grid.remove_row(row)    
-        if not inventory: 
+        row_count = self.armour_inv_grid.get_children()
+        row_count = (int(len(row_count))//5)
+        for rows in range(1,row_count):
+            print(row,"<--Row to remove")
             self.armour_inv_grid.remove_row(row)    
 
     def set_arm_inv(self):
@@ -1985,16 +2186,11 @@ class MainWindow(Gtk.Window):
             print(e,'<--Error in set_e_arm()')
 
     def clear_weapon_inv(self):
-        inventory = player['inventory']
         row = 2
         row_count = self.weapon_inv_grid.get_children()
-        # Get row count by -# title items/columns +1 <--so its inclusive of last row
-        row_count = (len(row_count)//9)+1
-        for item in inventory:
+        row_count = ((len(row_count))//9)
+        for rows in range(1,row_count):
             self.weapon_inv_grid.remove_row(row)
-        if row_count > len(inventory):
-            for r in range(1,row_count):
-                self.weapon_inv_grid.remove_row(row)
 
     def set_weapon_inv(self):
         inventory = player['inventory']
@@ -2621,10 +2817,21 @@ class MainWindow(Gtk.Window):
         dialog = EditInventory(self) 
         response = dialog.run()
         if response == 1:
+            print(player['inventory'])
             self.set_arm_inv()
             self.set_weapon_inv()
             self.set_inv_weight()
             
+            dialog.destroy()
+
+    def go_shopping(self, menuitem):
+        dialog = Shop(self)
+        response = dialog.run()
+        if response == 1:
+            self.set_arm_inv()
+            self.set_weapon_inv()
+            self.set_inv_weight()
+            self.set_atts_markup()
             dialog.destroy()
 
     def save(self, menuitem):
