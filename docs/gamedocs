@@ -1,0 +1,271 @@
+  ___ ___                           .__                       .___
+ /   |   \   ____    _____    ____  |  |  _____     ____    __| _/
+/    ~    \ /  _ \  /     \ _/ __ \ |  |  \__  \   /    \  / __ | 
+\    Y    /(  <_> )|  Y Y  \\  ___/ |  |__ / __ \_|   |  \/ /_/ | 
+ \___|_  /  \____/ |__|_|  / \___  >|____/(____  /|___|  /\____ | 
+       \/                \/      \/            \/      \/      \/ 
+          __________                                              
+          \______   \_____     ____    ____    ______             
+   ______  |       _/\__  \  _/ ___\ _/ __ \  /  ___/  ______     
+  /_____/  |    |   \ / __ \_\  \___ \  ___/  \___ \  /_____/     
+           |____|_  /(____  / \___  > \___  >/____  >             
+                  \/      \/      \/      \/      \/              
+-+- - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - - - -+-
+
+Human    - +1 Method, +6 skill points, +1 APP & FIT
+Midget   - +1 AGI, DEX, and FIT, +2 Hide, Sneak, Tumble, Steal
+Outsider - +1 INT, +2 all mechanical and knowledge skills sets.
+	   +2 Mind Resilience, -2 on all non-mechanical skill sets.
+Cyborg   - +2 Level 1 Cybernetics. Blood type compatible with cybernetics
+Mutant   - +4 Random Mutations, +2 Random mutations every 3 levels (4,7,10,etc.)
+
+-+- - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - - - -+-
+-+- - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - - - -+-
+
+___________.__                  
+\__    ___/|  |__  __ __  ____  
+  |    |   |  |  \|  |  \/ ___\ 
+  |    |   |   Y  \  |  / /_/  >
+  |____|   |___|  /____/\___  / 
+                \/     /_____/  
+	Tough & physically dependable.
+	Excels at fighting and survival.
+
+-+- - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - - - -+-
+ _______          __                      .__  .__          __   
+ \      \ _____ _/  |_ __ ______________  |  | |__| _______/  |_ 
+ /   |   \\__  \\   __\  |  \_  __ \__  \ |  | |  |/  ___/\   __\
+/    |    \/ __ \|  | |  |  /|  | \// __ \|  |_|  |\___ \  |  |  
+\____|__  (____  /__| |____/ |__|  (____  /____/__/____  > |__|  
+        \/     \/                       \/             \/        
+	Enemies of technology. Extremely durable and strong.
+
+-+- - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - - - -+-
+	The path of the Naturalist is the bane of technology. They hate machines
+and distrust science vehemently. Their conviction about the evils of technology
+drive them with a power bordering the miraculous. A Naturalists presence has 
+often been suspected of being the lone cause behind mechanical failures of
+all sorts. Cars stall, lights burn out, and bullets seem to never hit their mark.
+Some believe Naturalists are really just Mystics of a more savage nature
+-+- - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - - - -+-
+
+Requirements: Strength > 4
+	      Fitness  > 2
+              Wisdom   > 2
+
+
+
+   _____                 __  .__       .__       _____          __  .__          __   
+  /     \ _____ ________/  |_|__|____  |  |     /  _  \________/  |_|__| _______/  |_ 
+ /  \ /  \\__  \\_  __ \   __\  \__  \ |  |    /  /_\  \_  __ \   __\  |/  ___/\   __\
+/    Y    \/ __ \|  | \/|  | |  |/ __ \|  |__ /    |    \  | \/|  | |  |\___ \  |  |  
+\____|__  (____  /__|   |__| |__(____  /____/ \____|__  /__|   |__| |__/____  > |__|  
+        \/     \/                    \/               \/                    \/        
+	Kung Fu is their life style.
+
+-+- - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - - - -+-
+___________.__    .__        _____ 
+\__    ___/|  |__ |__| _____/ ____\
+  |    |   |  |  \|  |/ __ \   __\ 
+  |    |   |   Y  \  \  ___/|  |   
+  |____|   |___|  /__|\___  >__|   
+                \/        \/       
+	Burglar, Hacker, Cut purse. Survives with speed and wits.	
+
+-+- - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - - - -+-
+_________ .__                   .__          __   
+\_   ___ \|  |__   ____   _____ |__| _______/  |_ 
+/    \  \/|  |  \_/ __ \ /     \|  |/  ___/\   __\
+\     \___|   Y  \  ___/|  Y Y  \  |\___ \  |  |  
+ \______  /___|  /\___  >__|_|  /__/____  > |__|  
+        \/     \/     \/      \/        \/        
+	Creates elemental concoctions to heal and harm.
+
+-+- - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - - - -+-
+   _____                .__                  .__          __   
+  /     \   ____   ____ |  |__ _____    ____ |__| _______/  |_ 
+ /  \ /  \_/ __ \_/ ___\|  |  \\__  \  /    \|  |/  ___/\   __\
+/    Y    \  ___/\  \___|   Y  \/ __ \|   |  \  |\___ \  |  |  
+\____|__  /\___  >\___  >___|  (____  /___|  /__/____  > |__|  
+        \/     \/     \/     \/     \/     \/        \/        
+	Creates Gear technology, working miracles with machines.
+
+-+- - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - - - -+-
+   _____                  __  .__        
+  /     \ ___.__. _______/  |_|__| ____  
+ /  \ /  <   |  |/  ___/\   __\  |/ ___\ 
+/    Y    \___  |\___ \  |  | |  \  \___ 
+\____|__  / ____/____  > |__| |__|\___  >
+        \/\/         \/               \/ 
+	In tune with the cosmos a Mystic can control supernatural energies.
+
+-+- - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - - - -+-
+  _________              __                 
+ /   _____/ ____   ____ |  | __ ___________ 
+ \_____  \_/ __ \_/ __ \|  |/ // __ \_  __ \
+ /        \  ___/\  ___/|    <\  ___/|  | \/
+/_______  /\___  >\___  >__|_ \\___  >__|   
+        \/     \/     \/     \/    \/       
+	A hunter capable of tracking anyone or anything anywhere.
+
+-+- - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - - - -+-
+________                    .__  .__                             
+ /  _____/ __ __  ____   _____|  | |__| ____    ____   ___________ 
+/   \  ___|  |  \/    \ /  ___/  | |  |/    \  / ___\_/ __ \_  __ \
+\    \_\  \  |  /   |  \\___ \|  |_|  |   |  \/ /_/  >  ___/|  | \/
+ \______  /____/|___|  /____  >____/__|___|  /\___  / \___  >__|   
+        \/           \/     \/             \//_____/      \/       
+
+	Followers of an Ancient Art, they combine honour and guns.
+	
+-+- - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - - - -+- 
+
+	The Last Remnant of a tribe of powerful killers. They've had many 
+names throughout their history --> Bullet Monk, Breathing Guns, and 6 hells.
+No one knows their true origin. They were myth in the days of the first World
+War. When the War of Wheels began they appeared and offered 'un-wheeled' empires
+a fighting chance. The few still roaming are the remains of those empires failures.
+Many have no clue about the war that broke their silence. Many have been trained
+since then by the survivors, clueless of the legacy their skill descends from.
+
+-+- - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - - - -+-
+
+Requirements: Dexterity > 4 
+	      Wisdom    > 4
+
+Benefits by Level
+
+ Lv | Aim+| Resilience | Methodology
+ -----------------------------------------------------------------------|
+ 01 |  1  |  (0,0,1)   |Double Up, Fast Reload                          |
+ 02 |-----|------------|Duel Reload, Beading Focus +1, Range + 10'      |
+ 03 |  2  |------------|Etch Bullets +1 Dmg, Quick Draw                 |
+ 04 |-----|------------|Etch Bullets +1 Aim, Called Shot +1, Range + 20'|
+ 05 |  3  |  (0,0,2)   |Beading Focus +2, Bullet Sling                  |
+ 06 |-----|------------|Faster Reload, Range + 30'                      |
+ 07 |  4  |------------|Etch Bullets + 2 Dmg                            |
+ 08 |-----|------------|Etch Bullets + 2 Aim, Range + 40'               |
+ 09 |  5  |------------|Pistol Deflection, Called Shot +2               |
+ 10 |-----|  (0,0,3)   |Bullet Storm, Range + 50'                       |
+ 11 |  6  |------------|Beading Focus +3                                |
+ 12 |-----|------------|Fast, Range + 60'                               |
+ 13 |  7  |------------|Etch Bullets +3 Dmg, Called Shot +3             |
+ 14 |-----|------------|Etch Bullets +3 Aim, Range + 70'                |
+ 15 |  8  |  (0,0,4)   |Interruptor                                     |
+ 16 |-----|------------|Beading Focus +4, Range + 80'                   |
+ 17 |  9  |------------|Etch Bullets +4 Dmg, Called Shot +4             |
+ 18 |-----|------------|Etch Bullets +4 Aim, Range + 90'                |
+ 19 | 10  |------------|Dual Etch, Hip Shots                            |
+ 20 |-----|  (0,0,5)   |Own The Clock                                   |
+ -----------------------------------------------------------------------|
+
+Weapons & Armor
+---------------
+ All Revolvers & Semi Automatic Firearms
+ Light Armor
+ Bows, Slings, Crossbows
+ No Shields
+
+Skill Points
+------------
+ start - (3 + int mod) * 8
+ level up - 6 + int mod
+
+Starting Money and Equipment
+----------------------------
+ Money - roll 10-D6
+ (2) .22 Revolvers(loaded)
+
+Restrictions
+------------
+ No Automatic Weapons
+ No Explosives
+
+-------------------------------------------------------------------------
+Methods
+-------------------------------------------------------------------------
+Double Up - weild 2 single handed weapons at the same time
+Fast Reload - Cuts reload clicks in half
+Duel Realod - Reload 2 Revolvers as if reloading 1
+Beading Focus - For every click that a Gunslinger concentrates before each
+	shot, that shot receives a + 1 bonus to aim. 
+Range - Increased Revolver Range
+Etch Bullets Dmg/Aim - By spending time (10 min per bullet) a gunslinger can
+	carve patterns into his bullets to make them more lethal (Dmg) or
+	more accurate (Aim). A Bullet cannot have more than one etching.
+Called Shots - Bonus applied on all called shots
+Faster Reload- Cuts reload clicks in half again 
+Pistol Deflection - A Gunslingers guns act as small shields in his hands 
+	granting armor bonus of +1 per Revolver euipped.
+Bullet Storm - Allows Gunslingers to pull tiggers twice per click. Take a
+	-8 to armor total for 6 clicks afterward.
+Fast - +4 Initiative
+Interruptor - Free interrupts on foes interrupts
+Duel Etch - By Spending 8 hours per bullet a Gunslinger can carefully combine 
+	2 etchings on a single bullet.
+Hip Shots - No Bead penalty is now -5
+Own The Clock - Everytime the Gunslinger interrupts he gets and extra click that
+	round. This benefits even those interrupts granted from interrupts 
+
+-------------------------------------------------------------------------
+Available Skills
+-------------------------------------------------------------------------
+*Skill*   *Mod Attribute*  *Description*
+Gut            (WIS)     - Rely on your guy to get a sense of the situation
+Star Sense     (WIS)     - Ability to infer meaning from the stars alignment
+Meterology     (WIS)     - Ability to read the signs of the cosmos and predict patterns
+Survival-Wild  (WIS)     - Ability to find food and resources in wild
+Spot           (WIS)     - Spot hidden foes, objects, traps
+Listen         (WIS)     - Hear them before they hear you
+Mutantology    (INT)     - Knowledge of the mutant race
+Religion       (INT)     - Knowledge of various religious practices
+History        (INT)     - Knowledge of the past events
+Diplomacy      (CHA/APP) - Ability to talk your way through a situation
+Government     (INT)     - A keen understanding of Government structure
+Law            (INT)     - Knowledge of the Law and loop holes
+Sneak          (DEX/AGI) - Ability to move silent and unseen
+Hide           (DEX)     - Ability to hide and stay hideen
+
+
+-+- - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - - - -+-
+___________                    
+\_   _____/____    ____  ____  
+ |    __) \__  \ _/ ___\/ __ \ 
+ |     \   / __ \\  \__\  ___/ 
+ \___  /  (____  /\___  >___  >
+     \/        \/     \/    \/ 
+	A talker and manipulator. A Face can encourage or dishearten anyone.
+
+-+- - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - - - -+-
+.____                      .__                  
+|    |    _______  __ ____ |  |    __ ________  
+|    |  _/ __ \  \/ // __ \|  |   |  |  \____ \ 
+|    |__\  ___/\   /\  ___/|  |__ |  |  /  |_> >
+|_______ \___  >\_/  \___  >____/ |____/|   __/ 
+        \/   \/          \/             |__|    
+	Generic benefits by level
+-+- - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - - - -+-
+Exp Required | Lvl | Aim | Methods | Interrupts | Ability | Clicks |    Life   |
+-------------------------------------------------------------------------------+
+           0 |  1  |-----|    1    |------------|---------|--------|-----------|
+         400 |  2  | +1  |    2    |------------|---------|--------|+1 D6      |
+       1,000 |  3  |-----|---------|      1     |    2    |--------|+1 D6 + Fit|
+       2,500 |  4  | +2  |    3    |------------|---------|--------|+1 D6      |
+       5,500 |  5  |-----|---------|------------|    4    |   +1   |+1 D6 + Fit|
+      10,000 |  6  | +3  |    4    |      2     |---------|--------|+1 D6      |
+      22,000 |  7  |-----|---------|------------|    6    |--------|+1 D6 + Fit|
+      45,000 |  8  | +4  |    5    |------------|---------|--------|+1 D6      |
+      90,000 |  9  |-----|---------|      3     |    8    |--------|+1 D6 + Fit|
+     200,000 | 10  | +5  |    6    |------------|    9    |   +3   |+1 D6      |
+     450,000 | 11  |-----|---------|------------|   11    |--------|+1 D6 + Fit|
+     900,000 | 12  | +6  |    7    |      4     |---------|--------|+1 D6      |
+   1,500,000 | 13  |-----|---------|------------|   13    |--------|+1 D6 + Fit|
+   3,000,000 | 14  | +7  |    8    |------------|---------|--------|+1 D6      |
+   6,000,000 | 15  |-----|---------|      5     |   15    |   +4   |+1 D6 + Fit|
+  10,500,000 | 16  | +8  |    9    |------------|---------|--------|+1 D6      |
+  18,750,000 | 17  |-----|---------|------------|   17    |--------|+1 D6 + Fit|
+  28,000,000 | 18  | +9  |   10    |      6     |---------|--------|+1 D6      |
+  42,000,000 | 19  |-----|---------|------------|   19    |--------|+1 D6 + Fit|
+ 100,000,000 | 20  | +10 |   11    |------------|---------|   +6   |+1 D6
+ -------------------------------------------------------------------------------+
+
