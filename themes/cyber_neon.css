@@ -90,3 +90,15 @@ tooltip label {
   font-style: italic;
   font-weight: bold;
 }
+treeview {
+  background-color: #0A0A0F;
+}
+headerbar{
+  background-color: #0A0A0F;
+}
+stack{
+  background-color: #0A0A0F;
+}
+list{
+  background-color: #0A0A0F;
+}

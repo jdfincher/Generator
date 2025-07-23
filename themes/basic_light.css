@@ -42,7 +42,6 @@ entry {
   border: 1px solid #CFCFCF;
   background-color: #FFFFFF;
   color: #2E3436;
-  padding: 4px;
   border-radius: 2px;
 }
 
@@ -67,13 +66,13 @@ textview text {
 
 textview {
   padding: 10px;
-  background-color: #FFFFFF;
+  background-color: transparent;
 }
 
 frame border {
   border-color: #CFCFCF;
-  border-width: 1px;
-  border-radius: 6px;
+  border-width: 2px;
+  border-radius: 15px;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
@@ -92,4 +91,16 @@ tooltip label {
   color: #2E3436;
   font-style: normal;
   font-weight: normal;
+}
+treeview {
+  background-color: #FFFFFF;
+}
+headerbar{
+  background-color: #FFFFFF;
+}
+stack{
+  background-color:#FFFFFF;
+}
+list{
+  background-color:#FFFFFF;
 }

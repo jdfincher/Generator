@@ -3,6 +3,7 @@
 """The Generator 0.1"""
 
 # Import Modules
+import os
 import random
 import uuid
 import time
@@ -1760,8 +1761,8 @@ class MainWindow(Gtk.Window):
         menu_edit = Gtk.MenuItem.new_with_label(label="Attributes")
         menu_roll = Gtk.MenuItem.new_with_label(label="Roll Character")
         menu_inve = Gtk.MenuItem.new_with_label(label="Inventory")
-        menu_save = Gtk.MenuItem.new_with_label(label="Save Current")
-        menu_load = Gtk.MenuItem.new_with_label(label="Load Last")
+        menu_save = Gtk.MenuItem.new_with_label(label="Save")
+        menu_load = Gtk.MenuItem.new_with_label(label="Open")
         menu_skill_method = Gtk.MenuItem.new_with_label(label="Skills/Methods")
 
         menu_only_shop = Gtk.MenuItem.new_with_label(label="The Only Shop")
@@ -1778,8 +1779,8 @@ class MainWindow(Gtk.Window):
         menu_edit.connect("activate", self.editstats)
         menu_roll.connect("activate", self.generate_stats)
         menu_inve.connect("activate", self.edit_inv)
-        menu_save.connect("activate", self.save)
-        menu_load.connect("activate", self.load)
+        menu_save.connect("activate", self.save_file)
+        menu_load.connect("activate", self.load_file)
         menu_roll_dice_item.connect("activate", self.rollsim)
         menu_skill_method.connect("activate", self.skillmethod)
         menu_only_shop.connect("activate", self.go_shopping)
@@ -2936,17 +2937,17 @@ class MainWindow(Gtk.Window):
             self.set_atts_markup()
             dialog.destroy()
 
-    def save(self, menuitem):
+    def save(self, filename):
         try:
-            with open('character.pkl', 'wb') as character:
+            with open(filename, 'wb') as character:
                 pickle.dump(player,character)
             print("----SAVE COMPLETE----")
         except Exception as e:
             print("----FILE NOT SAVED----")
 
-    def load(self, menuitem):
+    def load(self, filename):
         try:
-            with open('character.pkl', 'rb') as character:
+            with open(filename, 'rb') as character:
                 global player
                 player = pickle.load(character)
             race_index = -1
@@ -2997,7 +2998,53 @@ class MainWindow(Gtk.Window):
         except Exception as e:
             print(e,'<----------Error with this value')
             self.text.set_text("----ERROR: FILE NOT FOUND----")
+    def load_file(self, widget):
+        dialog = Gtk.FileChooserDialog(
+            title = "Open Saved Character", 
+            parent = self, 
+            action = Gtk.FileChooserAction.OPEN)
+        dialog.add_buttons(
+            Gtk.STOCK_CLOSE,
+            Gtk.ResponseType.CANCEL,
+            Gtk.STOCK_OPEN,
+            Gtk.ResponseType.OK)
+        home = os.path.expanduser("~")
+        app_path = os.path.join(home,"Projects","Python","Generator","saves")
+        print(app_path,"<--Current default path")
+        dialog.set_current_folder(app_path)
+        response = dialog.run()
+        if response == Gtk.ResponseType.OK:
+            print("Open was clicked")
+            filename = dialog.get_filename()
+            print("File was selected:",dialog.get_filename(),"of type",type(filename))
+            self.load(filename)
+        elif response == Gtk.ResponseType.CANCEL:
+            print("Cancel was clicked")
+        dialog.destroy()
 
+    def save_file(self, widget):
+        dialog = Gtk.FileChooserDialog(
+            title = "Save Character",
+            parent = self,
+            action = Gtk.FileChooserAction.SAVE)
+        dialog.add_buttons(
+            Gtk.STOCK_CLOSE,
+            Gtk.ResponseType.CANCEL,
+            Gtk.STOCK_SAVE,
+            Gtk.ResponseType.OK)
+        home = os.path.expanduser("~")
+        app_path = os.path.join(home,"Projects","Python","Generator","saves")
+        dialog.set_current_folder(app_path)
+        response = dialog.run()
+        if response == Gtk.ResponseType.OK:
+            print("Save was clicked")
+            filename = dialog.get_filename()
+            print(filename)
+            self.save(filename)
+            print("File was saved at path",filename)
+        elif response == Gtk.ResponseType.CANCEL:
+            print("Cancel was clicked")
+        dialog.destroy()
 
 win = MainWindow()
 win.connect("destroy", Gtk.main_quit)

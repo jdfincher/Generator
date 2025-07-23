@@ -70,3 +70,15 @@ tooltip label {
   font-style: italic;
   font-weight: bold;
 }
+treeview {
+  background-color: #1E1E2E;
+}
+headerbar{
+  background-color: #1E1E2E;
+}
+stack{
+  background-color: #1E1E2E;
+}
+list{
+  background-color: #1E1E2E;
+}
