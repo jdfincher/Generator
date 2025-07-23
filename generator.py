@@ -1120,7 +1120,7 @@ class MainWindow(Gtk.Window):
     def __init__(self):
         super().__init__(title="The Generator 0.1")
         self.set_icon_from_file("FINGEN.png")
-        theme_load('coal_and_gold.css')
+        theme_load('themes/style.css')
         
         # Name
         name = Gtk.Label()
@@ -1876,6 +1876,7 @@ class MainWindow(Gtk.Window):
         theme = theme.lower()
         theme = theme+'.css'
         theme = theme.replace(' ','_')
+        theme = 'themes/'+theme
         theme_load(theme)
 
     def set_inv_weight(self):
