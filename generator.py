@@ -13,6 +13,10 @@ import pickle
 
 # Global
 
+# Themes
+themes = ('coal_and_gold.css','nordic_breeze.css','solarized_ember.css',
+          'rose_pine_dark.css','rose_pine_light.css','slate_and_gold.css',
+          'glacial_blue.css','code_dark.css','cyber_neon.css','basic_light.css','basic_grey.css')
 # Weapon                  (0Name, 1Cost, 2Damage, 3Range, 4Reload, 5Weight, 6Critical, 7Aim, 8Ammo) 
 weapons = {'hard knife'   :('hard knife','$20','D4','20ft','--','1lb','19-20','+0','--'),
            'baton'        :('baton','$30','D6','5ft','--','3lbs','19-20','+0','--'),
@@ -239,6 +243,31 @@ cyan = '\x1b[36m'
 brightmagenta = '\x1b[45m'
 brightcyan = '\x1b[46m'
 
+def roll(sides=6, dice=4):
+    """Uses Random module to simulate rolling stats with 4xD6
+    drops the lowest value and sums the remaining 3 by default.
+    Can be used for any number of dice but will always return 
+    sum of all -lowest roll.
+    Returns an integer 
+    """
+    lowest = 7
+    rolls = []
+    result = 0
+    for roll in range(0,dice):
+       rolls.append(random.randint(1,sides))
+    for i in rolls:
+        result += i
+        if i < lowest:
+            lowest = i
+    return (result - lowest)
+
+def theme_load(path):
+    css = Gtk.CssProvider()
+    css.load_from_path(path)
+    screen = Gdk.Screen.get_default()
+    style = Gtk.StyleContext()
+    style.add_provider_for_screen(screen, css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+
 class RollDice(Gtk.Dialog):
     def __init__(self, parent):
         super().__init__(title="Dice Roll Simulator")
@@ -264,7 +293,19 @@ class RollDice(Gtk.Dialog):
         grid.attach(result,            0, 2, 1, 1)
         grid.attach(self.result,       1, 2, 1, 1)
         grid.attach(roll,              0, 3, 3, 1)
-        box.pack_start(grid, True, True, 2)
+        grid.set_margin_start(10)
+        grid.set_margin_end(10)
+        grid.set_margin_bottom(10)
+
+        frame = Gtk.Frame()
+        label = Gtk.Label.new()
+        label.set_markup("<span size='large' weight='bold'>Roll Dice</span>")
+        frame.set_label_widget(label)
+        frame.set_label_align(0.5,0.5)
+        frame.add(grid)
+        
+
+        box.pack_start(frame, True, True, 2)
         self.show_all()
 
     def roll_sim(self, widget):
@@ -590,7 +631,14 @@ class EditStats(Gtk.Dialog):
         grid.set_margin_top(10)
         grid.set_margin_bottom(10)
         
-        box.pack_start(grid, True, True, 4)
+        stat_frame = Gtk.Frame()
+        stat_title = Gtk.Label.new()
+        stat_title.set_markup("<span size='large' weight='bold'>Edit Stats</span>")
+        stat_frame.set_label_widget(stat_title)
+        stat_frame.set_label_align(0.5,0.5)
+        stat_frame.add(grid)
+
+        box.pack_start(stat_frame, True, True, 4)
         self.show_all()
 
     def save_level(self, widget):
@@ -748,8 +796,19 @@ class EditSkillMethod(Gtk.Dialog):
         self.method_grid.set_margin_bottom(10)
         method_frame.add(self.method_grid)
         
-        skill_method_box.pack_start(skill_frame, True, True, 2)
-        skill_method_box.pack_start(method_frame, True, True, 2)
+        scroll_skill = Gtk.ScrolledWindow.new()
+        scroll_method = Gtk.ScrolledWindow.new()
+        scroll_skill.set_propagate_natural_width(True)
+        scroll_method.set_propagate_natural_width(True)
+        scroll_skill.set_min_content_height(350)
+        scroll_method.set_min_content_height(350)
+        scroll_skill.add(skill_frame)
+        scroll_method.add(method_frame)
+
+
+
+        skill_method_box.pack_start(scroll_skill, True, True, 2)
+        skill_method_box.pack_start(scroll_method, True, True, 2)
         skill_method.add(skill_method_box) 
         box.pack_start(skill_method, True, True, 2)
         self.add_skill_method()
@@ -846,6 +905,18 @@ class Shop(Gtk.Dialog):
         armour_grid = Gtk.Grid()
         weapon_grid = Gtk.Grid()
         
+        money_label = Gtk.Label()
+        money_label.set_markup("<span size='large' weight='bold' color='#82642C'>$$$:</span>")
+        self.money_value_label = Gtk.Label()
+        player_money = player['money']
+        self.money_value_label.set_markup(f"<span size='large' weight='bold' color='#82642C'>{player_money}</span>")
+        money_grid= Gtk.Grid()
+        money_grid.attach(money_label, 0, 0, 1, 1)
+        money_grid.attach(self.money_value_label, 1, 0, 1, 1)
+        money_grid.set_margin_top(10)
+        money_grid.set_hexpand(False)
+        money_grid.set_halign(Gtk.Align.CENTER)
+        
         armour_label = Gtk.Label()
         armour_label.set_markup("<span size='large' weight='bold'>Armour</span>")
         armour_frame = Gtk.Frame()
@@ -911,11 +982,13 @@ class Shop(Gtk.Dialog):
         scroll_weapon.set_propagate_natural_width(True)
         scroll_weapon.set_min_content_height(350)
         scroll_armour.set_min_content_height(350)
+        scroll_weapon.set_min_content_width(800)
         scroll_weapon.add(weapon_grid)
         scroll_armour.add(armour_grid)
 
         armour_frame.add(scroll_armour)
         weapon_frame.add(scroll_weapon)
+        box.pack_start(money_grid, True, True, 2)
         box.pack_start(armour_frame, True, True, 2)
         box.pack_start(weapon_frame, True, True, 2)
 
@@ -945,9 +1018,11 @@ class Shop(Gtk.Dialog):
                 if '$' in element:
                     price = element
             buy = Gtk.Button.new_with_label("Purchase")
-            buy.connect('clicked', self.buy_item, key, price) 
+            buy.connect('clicked', self.buy_item, key, price)
+            buy.connect('clicked', self.update_money)
             sell = Gtk.Button.new_with_label("Sell")
             sell.connect('clicked', self.sell_item, key, price)
+            sell.connect('clicked', self.update_money)
             blank1 = Gtk.Label.new("-----------")
             blank2 = Gtk.Label.new("-----------")
             armour_grid.attach(blank1, col, row, 1, 1)
@@ -986,8 +1061,10 @@ class Shop(Gtk.Dialog):
                     price = element
             buy = Gtk.Button.new_with_label("Purchase")
             buy.connect('clicked', self.buy_item, key, price)
+            buy.connect('clicked', self.update_money)
             sell = Gtk.Button.new_with_label("Sell")
             sell.connect('clicked', self.sell_item, key, price)
+            sell.connect('clicked', self.update_money)
             weapon_grid.attach(buy, col, row, 1, 1)
             if value in player['inventory']:
                 weapon_grid.attach(sell, (col+1), row, 1, 1) 
@@ -1006,12 +1083,12 @@ class Shop(Gtk.Dialog):
                 item = weapons[key]
                 player['inventory'].append(item)
                 purse -= price
-                player['money'] = "$"+str(purse)
+                player['money'] = str(purse)
             elif key in armour_set:
                 item = armour[key]
                 player['inventory'].append(item)
                 purse -= price
-                player['money'] = "$"+str(purse)
+                player['money'] = str(purse)
         else:
             print(player['money']) 
     def sell_item(button, dictionary, key, price):
@@ -1025,31 +1102,31 @@ class Shop(Gtk.Dialog):
                 item = weapons[key]
                 purse += price
                 player['inventory'].remove(item)
-                player['money'] = "$"+str(purse)
+                player['money'] = str(purse)
             elif key in armour_set and player['inventory']:
                 item = armour[key]
                 purse += price
                 player['inventory'].remove(item)
-                player['money'] = "$"+str(purse)
+                player['money'] = str(purse)
             super().__init__()
         except Exception as e:
             print(e)
+    def update_money(self, button):
+        money = player['money']
+        money_string = f"<span size='large' weight='bold' color='#82642C'>{money}</span>"
+        self.money_value_label.set_markup(money_string)
 
 class MainWindow(Gtk.Window):
-       
     def __init__(self):
         super().__init__(title="The Generator 0.1")
         self.set_icon_from_file("FINGEN.png")
-        css = Gtk.CssProvider()
-        css.load_from_path('style.css')
-        screen = Gdk.Screen.get_default()
-        style = Gtk.StyleContext()
-        style.add_provider_for_screen(screen, css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
-
+        theme_load('coal_and_gold.css')
+        
         # Name
         name = Gtk.Label()
         name.set_markup("<span size='x-large' weight='bold'>Name</span>")
         name.set_tooltip_text("Enter your Character's Name")
+        name.set_xalign(1)
         self.data_name = Gtk.Entry()
         self.data_name.set_alignment(1)
         self.data_name.connect("changed", self.add_name)
@@ -1665,6 +1742,10 @@ class MainWindow(Gtk.Window):
         menu_setup = Gtk.Menu()
         menu_setup_item.set_submenu(menu_setup)
 
+        menu_theme_item = Gtk.MenuItem.new_with_label(label="Theme")
+        self.menu_theme = Gtk.Menu()
+        menu_theme_item.set_submenu(self.menu_theme)
+
         menu_shop_item = Gtk.MenuItem.new_with_label(label="Shop")
         menu_shop = Gtk.Menu()
         menu_shop_item.set_submenu(menu_shop)
@@ -1711,12 +1792,14 @@ class MainWindow(Gtk.Window):
         menu_shop.insert(menu_only_shop,0)
 
         menu_bar.append(menu_setup_item)
+        menu_bar.append(menu_theme_item)
         menu_bar.append(menu_shop_item)
         menu_bar.append(menu_combat_item)
         menu_bar.append(menu_roll_dice_item)
         menu_bar.append(menu_edit)
         menu_bar.append(menu_inve)
         menu_bar.append(menu_skill_method)
+
 
         #Log Area
         log = Gtk.ScrolledWindow()
@@ -1776,7 +1859,24 @@ class MainWindow(Gtk.Window):
         main_grid.set_margin_bottom(5)
         
         self.add(main_grid)
+        self.populate_theme_menu()
 
+    def populate_theme_menu(self):
+        index = 0
+        for theme in themes:
+            theme = theme.removesuffix('.css')
+            theme = theme.replace('_',' ')
+            theme = theme.title()
+            item = Gtk.MenuItem.new_with_label(theme)
+            item.connect('activate', self.change_theme, theme)
+            self.menu_theme.insert(item,index)
+            index += 1
+
+    def change_theme(self, menu_item, theme):
+        theme = theme.lower()
+        theme = theme+'.css'
+        theme = theme.replace(' ','_')
+        theme_load(theme)
 
     def set_inv_weight(self):
         arm_grid = self.armour_inv_grid
@@ -2164,6 +2264,7 @@ class MainWindow(Gtk.Window):
                 armour.append(t)
                 self.set_arm_stats()
                 break
+
     def set_e_arm(self):
         armour = player['equipped_armour']
         col = 0 
@@ -2887,6 +2988,7 @@ class MainWindow(Gtk.Window):
             self.set_weapon_inv()
             self.set_atts_markup()
             self.set_e_arm()
+            self.set_skills()
             print(player['inventory'],"<-Player{} inventory")
             print(player['equipped_armour'],"<--Equipped Armour in player{}")
             print("----LOAD COMPLETE----")
@@ -2895,23 +2997,6 @@ class MainWindow(Gtk.Window):
             print(e,'<----------Error with this value')
             self.text.set_text("----ERROR: FILE NOT FOUND----")
 
-def roll(sides=6, dice=4):
-    """Uses Random module to simulate rolling stats with 4xD6
-    drops the lowest value and sums the remaining 3 by default.
-    Can be used for any number of dice but will always return 
-    sum of all -lowest roll.
-    Returns an integer 
-    """
-    lowest = 7
-    rolls = []
-    result = 0
-    for roll in range(0,dice):
-       rolls.append(random.randint(1,sides))
-    for i in rolls:
-        result += i
-        if i < lowest:
-            lowest = i
-    return (result - lowest)
 
 win = MainWindow()
 win.connect("destroy", Gtk.main_quit)

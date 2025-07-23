@@ -1,0 +1,95 @@
+
+separator {
+  min-height: 2px;
+  min-width: 2px;
+  background-color: #D3D7CF;
+}
+
+window {
+  background-color: #FFFFFF; /* Light neutral background */
+}
+
+button {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  color: #2E3436;
+  background-image: none;
+  background-color: #EDEDED;
+  border: 1px solid #CFCFCF;
+  border-radius: 4px;
+}
+
+button:active {
+  background-color: #D3D7CF;
+  border-style: inset;
+}
+
+button:hover {
+  background-color: #F5F5F5;
+  transition: background-color 0.2s ease-in-out;
+}
+
+label {
+  color: #2E3436;
+  font-weight: normal;
+}
+
+dialog {
+  background-color: #FFFFFF;
+}
+
+entry {
+  border: 1px solid #CFCFCF;
+  background-color: #FFFFFF;
+  color: #2E3436;
+  padding: 4px;
+  border-radius: 2px;
+}
+
+menubar {
+  background-color: #EDEDED;
+}
+
+menuitem:hover {
+  background-color: #D3D7CF;
+  box-shadow: inset 0 -1px 0 0 #AAAAAA;
+  transition: background-color 0.2s ease-in-out;
+}
+
+menu {
+  background-color: #FFFFFF;
+}
+
+textview text {
+  background-color: transparent;
+  color: #2E3436;
+}
+
+textview {
+  padding: 10px;
+  background-color: #FFFFFF;
+}
+
+frame border {
+  border-color: #CFCFCF;
+  border-width: 1px;
+  border-radius: 6px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+frame {
+  margin: 5px;
+}
+
+tooltip {
+  background-color: #FFFFDD;
+  border: 1px solid #CFCFCF;
+  padding: 6px;
+}
+
+tooltip label {
+  color: #2E3436;
+  font-style: normal;
+  font-weight: normal;
+}

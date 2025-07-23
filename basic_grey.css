@@ -1,0 +1,94 @@
+separator {
+  min-height: 2px;
+  min-width: 2px;
+  background-color: #5C616C;
+}
+
+window {
+  background-color: #242424; /* Dark base */
+}
+
+button {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  color: #FFFFFF;
+  background-image: none;
+  background-color: #3C3C3C;
+  border: 1px solid #5C616C;
+  border-radius: 4px;
+}
+
+button:active {
+  background-color: #4A4A4A;
+  border-style: inset;
+}
+
+button:hover {
+  background-color: #505050;
+  transition: background-color 0.2s ease-in-out;
+}
+
+label {
+  color: #FFFFFF;
+  font-weight: normal;
+}
+
+dialog {
+  background-color: #242424;
+}
+
+entry {
+  border: 1px solid #5C616C;
+  background-color: #333333;
+  color: #FFFFFF;
+  padding: 4px;
+  border-radius: 2px;
+}
+
+menubar {
+  background-color: #2F2F2F;
+}
+
+menuitem:hover {
+  background-color: #444444;
+  box-shadow: inset 0 -1px 0 0 #666666;
+  transition: background-color 0.2s ease-in-out;
+}
+
+menu {
+  background-color: #2F2F2F;
+}
+
+textview text {
+  background-color: transparent;
+  color: #E6E6E6;
+}
+
+textview {
+  padding: 10px;
+  background-color: #2F2F2F;
+}
+
+frame border {
+  border-color: #5C616C;
+  border-width: 1px;
+  border-radius: 6px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+frame {
+  margin: 5px;
+}
+
+tooltip {
+  background-color: #353535;
+  border: 1px solid #5C616C;
+  padding: 6px;
+}
+
+tooltip label {
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: normal;
+}

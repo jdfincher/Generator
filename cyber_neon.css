@@ -1,0 +1,92 @@
+separator {
+  min-height: 2px;
+  min-width: 2px;
+  background-color: #FF00A0; /* Neon pink */
+}
+
+window {
+  background-color: #0A0A0F; /* Deep tech noir background */
+}
+
+button {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  color: #00FFF7; /* Electric cyan */
+  background-image: none;
+  background-color: #0A0A0F;
+  border: 1px solid #FF00A0;
+}
+
+button:active {
+  background-color: #1B002E; /* Deep purple black */
+  font-style: italic;
+  border-style: none;
+}
+
+button:hover {
+  background-color: #FF00A0;
+  color: #0A0A0F;
+  transition: background-color 0.2s ease-in-out;
+}
+
+label {
+  color: #00FFF7;
+}
+
+dialog {
+  background-color: #0A0A0F;
+}
+
+entry {
+  border: 1px solid #39FF14; /* Neon green */
+  background-color: #121212;
+  color: #D0D0D0;
+}
+
+menubar {
+  background-color: #121212;
+}
+
+menuitem:hover {
+  box-shadow: inset 0 -2px 0 0 #00FFF7;
+  background-color: #1C1C2E;
+  transition: background-color 0.2s ease-in-out;
+}
+
+menu {
+  background-color: #121212;
+}
+
+textview text {
+  background-color: transparent;
+  color: #FF00A0;
+  font-style: italic;
+  font-weight: bold;
+}
+
+textview {
+  padding: 10px;
+  background-color: transparent;
+}
+
+frame border {
+  border-color: #39FF14;
+  border-width: 2px;
+  border-radius: 15px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+frame {
+  margin: 5px;
+}
+
+tooltip {
+  background-color: #0A0A0F;
+}
+
+tooltip label {
+  color: #FF00A0;
+  font-style: italic;
+  font-weight: bold;
+}

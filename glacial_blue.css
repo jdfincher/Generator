@@ -1,0 +1,72 @@
+separator {
+	min-height: 2px;
+	min-width: 2px;
+  background-color: #89CFF0;
+}
+window {
+	background-color: #0A1A2F;
+}
+button {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	color: #CAE9FF;
+  background-image: none;
+  background-color: #0A1A2F;
+  border: 0.25px solid #89CFF0; 
+}
+button:active {
+  background-color: #0F2C45;
+  font-style: italic;
+  border-style: none;
+}
+button:hover {
+  background-color: #89CFF0;
+}
+label {
+  color: #B0DAF1;
+}
+dialog {
+  background-color: #0A1A2F;
+}
+entry {
+  border: 0.25px solid #89CFF0;
+  background-color: #102A44;
+}
+menubar {
+  background-color: #102A44;
+}
+menuitem:hover {
+	box-shadow: inset 0 -2px 0 0 #89CFF0;
+  background-color: #16344D;
+}
+menu {
+  background-color: #102A44;
+}
+textview text {
+  background-color: transparent;
+  color: #89CFF0;
+  font-style: italic;
+  font-weight: bold;
+}
+textview {
+  padding: 10px;
+  background-color: transparent;
+}
+frame border {
+  border-color: #89CFF0;
+  border-width: 2px;
+  border-radius:15px; 
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;  
+}
+frame {
+  margin: 5px;
+}
+tooltip {
+  background-color: #0A1A2F;	
+}
+tooltip label {
+  color: #89CFF0;
+  font-style: italic;
+  font-weight: bold;
+}
