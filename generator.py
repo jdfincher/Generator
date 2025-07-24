@@ -1121,7 +1121,7 @@ class MainWindow(Gtk.Window):
     def __init__(self):
         super().__init__(title="The Generator 0.1")
         self.set_icon_from_file("FINGEN.png")
-        theme_load('themes/style.css')
+        theme_load('themes/basic_grey.css')
         
         # Name
         name = Gtk.Label()
@@ -1764,16 +1764,16 @@ class MainWindow(Gtk.Window):
         menu_save = Gtk.MenuItem.new_with_label(label="Save")
         menu_load = Gtk.MenuItem.new_with_label(label="Open")
         menu_skill_method = Gtk.MenuItem.new_with_label(label="Skills/Methods")
-
         menu_only_shop = Gtk.MenuItem.new_with_label(label="The Only Shop")
     
         menu_print.set_tooltip_text("Prints Character to Text File")
         menu_edit.set_tooltip_text("Edit Character Stats")
         menu_roll.set_tooltip_text("      Roll Character Stats\n*OVERWRITES ALL STATS!*")
         menu_inve.set_tooltip_text("Add/Remove Inventory Items")
-        menu_save.set_tooltip_text("Save Current Character")
-        menu_load.set_tooltip_text("Load Last Saved Character")
+        menu_save.set_tooltip_text("Save character to file")
+        menu_load.set_tooltip_text("Open character from file.")
         menu_skill_method.set_tooltip_text("Add/Remove Skills/Methods")
+        menu_only_shop.set_tooltip_text("Buy/Sell Equipment")
 
         menu_print.connect("activate", self.print_char_sheet)
         menu_edit.connect("activate", self.editstats)

@@ -9,8 +9,8 @@ window {
 }
 
 button {
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   color: #FFFFFF;
   background-image: none;
   background-color: #3C3C3C;
